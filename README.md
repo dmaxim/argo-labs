@@ -42,3 +42,7 @@ kustomize build prod
 k apply -k prod/
 
 k argo rollouts dashboard -p 3100
+
+## CLean up prod
+
+k delete -k prod/
