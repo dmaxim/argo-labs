@@ -7,7 +7,14 @@ spec:
   strategy: 
     blueGreen: null
     canary:
+      canaryService: vote-preview
+      stableService: vote
+      trafficRouting:
+        nginx:
+          stableIngress: vote
       steps:
+      - setCanaryScale:
+          replicas: 3
       - setWeight: 20
       - pause: 
           duration: 10s
@@ -24,7 +31,7 @@ spec:
   template:
     spec:
       containers:
-      - image: schoolofdevops/vote:v2
+      - image: schoolofdevops/vote:v3
         name: vote
         
           
