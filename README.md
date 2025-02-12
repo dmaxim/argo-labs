@@ -19,7 +19,7 @@ k apply -k staging/
 
 ## Rollout dashboard
 
-k argo rollouts dashboard -p 3100
+k argo rollouts dashboard -p 3100 -n argo-rollouts
 
 ## View
 
