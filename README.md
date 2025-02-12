@@ -26,3 +26,19 @@ k argo rollouts dashboard -p 3100
 k argo rollouts list rollouts
 
 k argo rollouts get rollouts vote
+
+## Clean up staging
+
+k delete -k staging/
+
+## Canary
+
+k create ns prod
+
+k config set-context --current --namespace=prod
+
+kustomize build prod
+
+k apply -k prod/
+
+k argo rollouts dashboard -p 3100
