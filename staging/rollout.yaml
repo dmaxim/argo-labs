@@ -1,0 +1,11 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: vote
+spec:
+  template:
+    spec:
+      containers:
+      - image: schoolofdevops/vote:v2
+        name: vote
+        
