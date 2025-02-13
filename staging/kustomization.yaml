@@ -15,3 +15,7 @@ labels:
 patches:
 - path: service.yaml
 - path: rollout.yaml
+images:
+- name: schoolofdevops/vote
+  newName: dmaxim/vote
+  newTag: 22a8c15
