@@ -15,8 +15,7 @@ labels:
 patches:
 - path: service.yaml
 - path: rollout.yaml
-- path: fitness-test.yaml
-- path: load-test-analysis.yaml
+
 images:
 - name: schoolofdevops/vote
   newName: dmaxim/vote

@@ -18,11 +18,11 @@ spec:
                   - "--concurrent=2"
                   - "--benchmark"
                   - "--time=5m"
-                  - "--header='X-Canary: siege'"
-                  - "http://vote.example.com"
+                  - "--header='X-Canary: siege'" # Add this header which limits the load test so it only hits the canary service - matches the annotation in the Rollout
+                  - "https://vote.danmaxim.net"
               restartPolicy: Never
-              hostAliases:
-              - ip: "xx.xx.xx.xx"
-                hostnames:
-                - "vote.example.com"
+              # hostAliases:
+              # - ip: "xx.xx.xx.xx"
+              #   hostnames:
+              #   - "vote.example.com"
           backoffLimit: 4

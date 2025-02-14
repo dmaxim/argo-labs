@@ -12,16 +12,16 @@ spec:
       steps:
       - setCanaryScale:
           replicas: 2
-      # - experiment:
-      #     duration: 3m
-      #     templates:
-      #     - name: canary
-      #       specRef: canary
-      #       service:
-      #         name: experiment
-      #     analysis:
-      #       - name: fitness-test
-      #         templateName: canary-fitness-test
+      - experiment:
+          duration: 3m
+          templates:
+          - name: canary
+            specRef: canary
+            service:
+              name: experiment
+          analysis:
+            - name: fitness-test
+              templateName: canary-fitness-test
 
       - setWeight: 20
       - pause: 
@@ -32,10 +32,10 @@ spec:
       - setWeight: 60
       - pause: 
           duration: 10s
-      # - analysis:
-      #     templates:
-      #     #- templateName: loadtest
-      #     - templateName: latency
+      - analysis:
+          templates:
+          - templateName: loadtest
+          - templateName: latency
       - setWeight: 80
       - pause: 
           duration: 10s
@@ -44,12 +44,12 @@ spec:
         nginx:
           stableIngress: vote
           additionalIngressAnnotations:
-            canary-by-header: X-Canary
+            canary-by-header: X-Canary  # Add this header which limits the load test so it only hits the canary service
             canary-by-header-value: siege
   template:
     spec:
       containers:
-      - image: schoolofdevops/vote:v4
+      - image: schoolofdevops/vote:v5
         name: vote
         
           
