@@ -12,16 +12,16 @@ spec:
       steps:
       - setCanaryScale:
           replicas: 2
-      - experiment:
-          duration: 3m
-          templates:
-          - name: canary
-            specRef: canary
-            service:
-              name: experiment
-          analysis:
-            - name: fitness-test
-              templateName: canary-fitness-test
+      # - experiment:
+      #     duration: 3m
+      #     templates:
+      #     - name: canary
+      #       specRef: canary
+      #       service:
+      #         name: experiment
+      #     analysis:
+      #       - name: fitness-test
+      #         templateName: canary-fitness-test
 
       - setWeight: 20
       - pause: 
@@ -32,10 +32,10 @@ spec:
       - setWeight: 60
       - pause: 
           duration: 10s
-      - analysis:
-          templates:
-          #- templateName: loadtest
-          - templateName: latency
+      # - analysis:
+      #     templates:
+      #     #- templateName: loadtest
+      #     - templateName: latency
       - setWeight: 80
       - pause: 
           duration: 10s
