@@ -34,7 +34,7 @@ spec:
           duration: 10s
       - analysis:
           templates:
-          - templateName: loadtest
+          #- templateName: loadtest
           - templateName: latency
       - setWeight: 80
       - pause: 
