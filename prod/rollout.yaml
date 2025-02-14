@@ -16,7 +16,7 @@ spec:
           duration: 3m
           templates:
           - name: canary
-            syncRef: canary
+            specRef: canary
             service:
               name: experiment
           analysis:
