@@ -4,3 +4,6 @@ resources:
 - rollout.yaml
 - service.yaml
 - preview-service.yaml
+- fitness-test.yaml
+- latency-analysis.yaml
+- load-test-analysis.yaml

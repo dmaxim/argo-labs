@@ -14,5 +14,3 @@ patches:
 - path: service.yaml
 - path: preview-service.yaml
 - path: rollout.yaml
-- path: fitness-test.yaml
-- path: load-test-analysis.yaml
