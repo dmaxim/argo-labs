@@ -9,12 +9,20 @@ spec:
     canary:
       canaryService: vote-preview
       stableService: vote
-      trafficRouting:
-        nginx:
-          stableIngress: vote
       steps:
       - setCanaryScale:
-          replicas: 3
+          replicas: 2
+      - experiment:
+          duration: 3m
+          templates:
+          - name: canary
+            syncRef: canary
+            service:
+              name: experiment
+          analysis:
+            - name: fitness-test
+              templateName: canary-fitness-test
+
       - setWeight: 20
       - pause: 
           duration: 10s
@@ -24,10 +32,20 @@ spec:
       - setWeight: 60
       - pause: 
           duration: 10s
+      - analysis:
+          templates:
+          - templateName: loadtest
+          - templateName: latency
       - setWeight: 80
       - pause: 
           duration: 10s
       - setWeight: 100
+      trafficRouting:
+        nginx:
+          stableIngress: vote
+          additionalIngressAnnotations:
+            canary-by-header: X-Canary
+            canary-by-header-value: siege
   template:
     spec:
       containers:
